@@ -14,7 +14,7 @@ register = template.Library()
 def intercom_js(user):
     if hasattr(settings, "INTERCOM_APP_ID") and user.is_authenticated():
         if hasattr(settings, "INTERCOM_USER_HASH_KEY"):
-            user_hash = hmac.new(settings.INTERCOM_USER_HASH_KEY, str(user.pk), hashlib.sha256).hexdigest()
+            user_hash = hmac.new(settings.INTERCOM_USER_HASH_KEY, user.pk, hashlib.sha256).hexdigest()
         else:
             user_hash = None
 
