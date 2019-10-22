@@ -12,7 +12,7 @@ register = template.Library()
 
 @register.inclusion_tag("intercom/_intercom_js.html")
 def intercom_js(user):
-    if hasattr(settings, "INTERCOM_APP_ID") and user.is_authenticated():
+    if hasattr(settings, "INTERCOM_APP_ID") and user.is_authenticated:
         if hasattr(settings, "INTERCOM_USER_HASH_KEY"):
             user_hash = hmac.new(settings.INTERCOM_USER_HASH_KEY, str(user.pk).encode('ascii'), hashlib.sha256).hexdigest()
         else:
